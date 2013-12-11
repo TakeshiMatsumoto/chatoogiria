@@ -10,7 +10,7 @@ app.configure(function(){//アプリケー主恩の編集
   app.set('views', __dirname + '/views');
   app.use(express.static(__dirname + '/static'));
   app.set('view engine', 'ejs');
-     app.use(express.static(__dirname + '/static'));
+  app.use(express.static(__dirname + '/static'));
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
