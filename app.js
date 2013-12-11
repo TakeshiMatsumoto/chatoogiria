@@ -49,7 +49,7 @@ app.use(express.methodOverride());
    io.configure(function(){
     io.set('transports', ['xhr-polling']);
     io.set('polling duration', 10);
-
+});
 
 app.post('/app.js',function(req,res)
 {
