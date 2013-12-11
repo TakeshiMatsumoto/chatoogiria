@@ -10,7 +10,7 @@ app.configure(function(){//アプリケー主恩の編集
   app.set('views', __dirname + '/views');
   app.use(express.static(__dirname + '/static'));
   app.set('view engine', 'ejs');
-  app.use(express.favicon());
+    app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
@@ -49,7 +49,7 @@ app.use(express.methodOverride());
    io.configure(function(){
     io.set('transports', ['xhr-polling']);
     io.set('polling duration', 10);
-});
+}):;
 
 app.post('/app.js',function(req,res)
 {
