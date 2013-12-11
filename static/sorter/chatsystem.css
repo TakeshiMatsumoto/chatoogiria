@@ -1,0 +1,42 @@
+
+
+body{
+ margin:0; 
+ margin-bottom: 50px;           /* ←追加 */
+}
+
+.box {
+	float: left;
+}
+
+#enter {
+	font-size: 150%;
+	color: red;
+}
+
+#title {
+	font-size: 200%;
+
+}
+
+#chatcss{
+		margin-right: 70px; 
+
+}
+
+#currentloginuser{
+	border:solid; 
+	
+}
+
+#boxline{
+	height:250;
+	width:500px;
+	border:solid; 
+	
+}
+
+.textform {
+width: 300px;
+
+}

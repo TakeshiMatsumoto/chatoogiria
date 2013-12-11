@@ -1,0 +1,34 @@
+<html>
+<head>
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+<h2>部屋１には只今<%=memberNumber1%>人数ログインしてます</h2></br>
+<form action="./room1" method="get">
+<input type="text" name="username" id="username1">
+<input type="submit" value="部屋１にログインする" onclick="userenter1()">
+</form>
+</br>
+<h2>部屋2には只今<%=memberNumber2%>人数ログインしてます</h2></br>
+<form action="./room2" method="get">
+<input type="text" name="username" id="username2">
+<input type="submit" value="部屋2にログインする" onclick="userenter2()">
+</form>
+</br>
+<h2>部屋3には只今<%=memberNumber3%>人数ログインしてます</h2></br>
+<form action="./room3" method="get">
+<input type="text" name="username" id="username2" onclick="userenter3()">
+<input type="submit" value="部屋3にログインする">
+</form>
+</br>
+<h2>部屋4には只今<%=memberNumber4%>人数ログインしてます</h2></br>
+<form action="./room4" method="get">
+<input type="text" name="username" id="username2" onclick="userenter4()">
+<input type="submit" value="部屋4にログインする">
+</form>
+
+
+</html>
