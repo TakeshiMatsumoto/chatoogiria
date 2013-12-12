@@ -24,10 +24,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-io.configure(function () { 
-  io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
-});
+
 
 
 app.get('/users', user.list);
@@ -46,6 +43,11 @@ server.listen(app.get('port'), function(){ //app.setで設定したポートで�
 var socketIO = require('socket.io');
 // クライアントの接続を待つ(IPアドレスとポート番号を結びつけます)
 var io = socketIO.listen(server);//appで作ったサーバーにsocketIOを結びつける
+
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
 
 app.use(express.bodyParser());
 app.use(express.methodOverride());
