@@ -8,8 +8,8 @@ var app = express();//アプリケーションオブジェクト
 app.configure(function(){//アプリケー主恩の編集
   app.set('port', process.env.PORT || 8080);//ポートを設定
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
   app.use(express.static(__dirname + '/static'));
+  app.set('view engine', 'ejs');
   app.use(express.static(__dirname + '/static'));
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
@@ -22,6 +22,11 @@ app.configure(function(){//アプリケー主恩の編集
 
 app.configure('development', function(){
   app.use(express.errorHandler());
+});
+
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
 });
 
 
