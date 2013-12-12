@@ -45,6 +45,11 @@ var socketIO = require('socket.io');
 // クライアントの接続を待つ(IPアドレスとポート番号を結びつけます)
 var io = socketIO.listen(server);//appで作ったサーバーにsocketIOを結びつける
 
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
+
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 
