@@ -1,23 +1,13 @@
 {
-  "name": "chatoogiri",
-  "version": "0.0.0",
-  "description": "",
-  "main": "app.js",
-  "dependencies": {
-    "ejs": "~0.8.4",
-    "express": "3.4.4",
-    "socket.io": "~0.9.16",
-  },
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/bonkun/chatoogiria.git"
-  },
-  "author": "",
-  "license": "BSD-2-Clause",
-  "bugs": {
-    "url": "https://github.com/bonkun/chatoogiria/issues"
+  "dependencies": {
+    "express": "3.4.4",
+    "ejs": "*",
+    "socket.io": "~0.9.16",
   }
 }
