@@ -3,13 +3,11 @@
   "version": "0.0.0",
   "description": "",
   "main": "app.js",
-  ,,,,,,,,,,
   "dependencies": {
     "ejs": "~0.8.4",
     "express": "3.4.4",
     "socket.io": "~0.9.16",
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
