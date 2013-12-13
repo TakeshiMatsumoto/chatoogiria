@@ -34,7 +34,7 @@ for(var i=1; i<data.loginuser.length;i++){
 });
 });
 
-socket.on('enter1',function(enter){
+socket.on('enter1',function(enter){//
 username=enter.value;
 otherusername[0]=username;
 roomnumber=enter.roomnum;
@@ -221,8 +221,8 @@ $("#table").empty();//結果表示を空にする
 $("#table").append($('<table id="result"><thead><th width="150">名前</th><th width="150">ネタ</th><th width="150">点数</th><tbody id="tbody"></tbody></thead></table>'));
 otherusername = new Array(username);
 postusernamearray=new Array(1);
-timerseconds=120;
-votetimerseconds=100;
+timerseconds=5;
+votetimerseconds=5;
 userpoints=new Array(100);
 
 });
