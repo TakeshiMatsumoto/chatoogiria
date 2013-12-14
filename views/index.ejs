@@ -163,6 +163,8 @@ function votebutton(){
 if(ingame==1){//ゲーム中なら。
 $(function(){
 
+$("#confirm").empty();//投票を受け付けた事を知らせる部分を空にする
+
 $("#vote").after("<form id='votebutton'></form>");//投票になったらボタンを追加する
 
 $("#votebutton").append($('<input id="submitbutton"type="button" value="採点"　onclick="votesubmitcal()"/>'));//
@@ -179,6 +181,9 @@ votesubmitcal();
 
 function votesubmitcal(){
 
+$(function(){
+$("#confirm").text("投票受け付けました");
+});
 
 for(var i=1;i<otherusername.length;i++){
 
@@ -188,7 +193,7 @@ var pointcheck=$("#"+otherusername[i]+"check"+j+":checked").val();//ポイント
 
 if(pointcheck!=undefined)
 {
-
+alert(pointcheck);
 userpoints[otherusername[i]]=pointcheck;
 
 }
@@ -337,6 +342,7 @@ $("#vote").empty();//ボタンを空にする
 $("#votebutton").empty();//
 $("#odai").empty();//
 $("#timer").empty();//
+$("#confirm").empty();
 gamecheck=0;
 });
 }
@@ -405,6 +411,7 @@ socket.emit('userdelete',{roomnum:roomnumber,value:data.value})
   <h2>大喜利コーナー</h2>
   <h1><div id="odai"></div></h>
   <h2 id="timer"></h2></br>
+    <h2 id="confirm"></h2>
   <h2>回答フォーム<h2>
   <input type="text" id="answer" class="textform" value="">  <input id="answerbutton" type="button" value="お題に答える" onclick="answer()"><br>
     <input id="start" type="button" value="大喜利スタート" onclick="getstart()">
