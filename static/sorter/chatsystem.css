@@ -33,6 +33,7 @@ body{
 	height:250;
 	width:500px;
 	border:solid; 
+	overflow: scroll;
 	
 }
 
