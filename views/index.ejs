@@ -3,8 +3,8 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="./sorter/jquery.tablesorter.min.js"></script>
 <script type="text/javascript">
-var socket = io.connect('http://rocky-lowlands-2030.herokuapp.com/');//3000に繋いでね。
-
+var socket = io.connect('http://localhost:8080');//3000に繋いでね。
+var socket = io.connect('http://rocky-lowlands-2030.herokuapp.com/');
 
 odaiarray= new Array("校長の長話に感動した理由は？","娘がケーキ屋さんを目指している衝撃的な理由","全国いい人選手権優勝者の驚きの行動","じゃがりこ新製品のキャッチフレーズ");
 otherusername=new Array(30);
@@ -16,7 +16,11 @@ loginuser=new Array(1)//ログイン中のユーザーを格納する
 
 socket.on('userenter',function(data){//入室した事を知らせる&現在ログイン中のユーザーの表示
 
-
+gamecheck=data.gamecheck;
+alert(gamecheck);
+if(ingame!=1){
+whetheringame();
+}
 $(function(){
      loginuser=data.loginuser;
 $("#enter").text(data.value+"さんが入室しました。");
@@ -34,7 +38,7 @@ for(var i=1; i<data.loginuser.length;i++){
 });
 });
 
-socket.on('enter1',function(enter){//
+socket.on('enter1',function(enter){
 username=enter.value;
 otherusername[0]=username;
 roomnumber=enter.roomnum;
@@ -51,11 +55,11 @@ socket.on('enter2',function(enter){
 username=enter.value;
 otherusername[0]=username;
 roomnumber=enter.roomnum;
-whetheringame();
+
 otherusername = new Array(username);
 $(function(){
 $("#enter").text(enter.value+"さんが入室しました。");
-socket.emit('userenter2',{roomnum:"1",username:username,});
+socket.emit('userenter2',{roomnum:"2",username:username,});
 
 });
 
@@ -65,10 +69,10 @@ socket.on('enter3',function(enter){
 username=enter.value;
 otherusername[0]=username;
 roomnumber=enter.roomnum;
-whetheringame();
+
 otherusername = new Array(username);
 $(function(){
-socket.emit('userenter3',{roomnum:"1",username:username,});
+socket.emit('userenter3',{roomnum:"3",username:username,});
 
 });
 
@@ -78,18 +82,21 @@ socket.on('enter4',function(enter){
 username=enter.value;
 otherusername[0]=username;
 roomnumber=enter.roomnum;
-whetheringame();
+
 otherusername = new Array(username);
 $(function(){
-socket.emit('userenter4',{roomnum:"1",username:username,});
+socket.emit('userenter4',{roomnum:"4",username:username,});
 
 });
 
 });
 
 function whetheringame(){//入室した時にゲーム中だったらボタンを使えなくする
+alert(gamecheck);
 
-if(gamecheck==1){
+if(gamecheck=="1")
+{
+alert("bbb");
 $('#start').attr('disabled', true);
  $("#odai").text("只今ゲーム中です。しばらくお待ち下さい。（チャットはできます）"); 
 
@@ -102,10 +109,11 @@ socket.on('clientmessage', function(msg) {//メッセージを受け取った時
   // メッセージを画面に表示する
   var licount=$('#chatbox li').size();
 
-  if(licount<14){
+  if(licount<40){
   $(function(){
   var receivemsg="<li>"+msg.username+":"+msg.value+"</li>";
   $("#chatbox").append(receivemsg); 
+  
   });
   }
   else{
@@ -116,7 +124,7 @@ socket.on('clientmessage', function(msg) {//メッセージを受け取った時
       });
   
   }
-   $("#boxline").scrollTop($("#boxline")[0].scrollHeight);
+ $("#boxline").scrollTop($("#boxline")[0].scrollHeight);
 });
 
 
@@ -162,9 +170,7 @@ function votebutton(){
 
 if(ingame==1){//ゲーム中なら。
 $(function(){
-
 $("#confirm").empty();//投票を受け付けた事を知らせる部分を空にする
-
 $("#vote").after("<form id='votebutton'></form>");//投票になったらボタンを追加する
 
 $("#votebutton").append($('<input id="submitbutton"type="button" value="採点"　onclick="votesubmitcal()"/>'));//
@@ -179,7 +185,7 @@ votesubmitcal();
 
 }
 
-function votesubmitcal(){
+function votesubmitcal(){//採点
 
 $(function(){
 $("#confirm").text("投票受け付けました");
@@ -201,6 +207,9 @@ userpoints[otherusername[i]]=pointcheck;
 
 
 }
+
+
+
 }
 
 // メッセージを送る。送信ぼたんが押されたら
@@ -222,13 +231,12 @@ function DisConnect() {
 
 socket.on('clientinitialize',function(){
 ingame=1;
-gamecheck=1;
 $("#table").empty();//結果表示を空にする
 $("#table").append($('<table id="result"><thead><th width="150">名前</th><th width="150">ネタ</th><th width="150">点数</th><tbody id="tbody"></tbody></thead></table>'));
 otherusername = new Array(username);
 postusernamearray=new Array(1);
-timerseconds=5;
-votetimerseconds=5;
+timerseconds=20;
+votetimerseconds=10;
 userpoints=new Array(100);
 
 });
@@ -258,7 +266,7 @@ function answer(){
 $(function(){
 
 youranswer=$("#answer").val();
-
+$("#confirm").text("投稿受け付けました");
 });
 
 }
@@ -329,8 +337,7 @@ socket.emit('sumpoints', { name:otherusername[i],points:userpoints[otherusername
 }
 
 socket.on('showresult',function(result){//サーバーから送られてきた採点結果を表示する。
-if(ingame==1)
-{
+
 $(function(){
            var realresult=result.result;
 $("#tbody").append(realresult);//採点結果を入れる
@@ -345,7 +352,7 @@ $("#timer").empty();//
 $("#confirm").empty();
 gamecheck=0;
 });
-}
+
 });
 
 socket.on('userlogout',function(data){
@@ -410,8 +417,8 @@ socket.emit('userdelete',{roomnum:roomnumber,value:data.value})
   <div class="box">
   <h2>大喜利コーナー</h2>
   <h1><div id="odai"></div></h>
+  <h2 id="confirm"></h2>
   <h2 id="timer"></h2></br>
-    <h2 id="confirm"></h2>
   <h2>回答フォーム<h2>
   <input type="text" id="answer" class="textform" value="">  <input id="answerbutton" type="button" value="お題に答える" onclick="answer()"><br>
     <input id="start" type="button" value="大喜利スタート" onclick="getstart()">
