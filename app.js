@@ -90,7 +90,7 @@ for(var i = 0; i < len; i++){
 	for(var j = 0; j < len; j++){
 		CalPoint [i][j] = '';
 	}}
-
+var gamecheck=0;
 
 
 
@@ -171,7 +171,7 @@ else{
         socket.join("1");//1にログイン
         allClients[socket]=data.username;//ソケットをキーとしてユーザー名を格納する
         allroomClients1[socket]="1";//ソケットをキーとして部屋番号を格納する。
-        io.sockets.to("1").emit('userenter', { value:data.username,loginuser:loginuser1});//ログインしたことを知らせるメソッドを呼び出す
+        io.sockets.to("1").emit('userenter', { value:data.username,loginuser:loginuser1,gamecheck:gamecheck});//ログインしたことを知らせるメソッドを呼び出す
 
     });  
 
@@ -181,14 +181,14 @@ else{
         allClients[socket]=data.username;//ソケットをキーとしてユーザー名を格納する
         allroomClients1[socket]="2";
         socket.join("2");
-         io.sockets.to("2").emit('userenter', { value:data.username,loginuser:loginuser2});
+         io.sockets.to("2").emit('userenter', { value:data.username,loginuser:loginuser2,gamecheck:gamecheck});
     });
     
   socket.on('userenter3', function(data) {//メッセージイベントを送るイベント
         allClients[socket]=data.username;//ソケットをキーとしてユーザー名を格納する
         allroomClients1[socket]="3";
         socket.join("3");
-        io.sockets.to("3").emit('userenter', { value:data.username,loginuser:loginuser3});
+        io.sockets.to("3").emit('userenter', { value:data.username,loginuser:loginuser3,gamecheck:gamecheck});
     
     });
     
@@ -197,12 +197,11 @@ else{
         allClients[socket]=data.username;//ソケットをキーとしてユーザー名を格納する
         allroomClients1[socket]="4";
         socket.join("4");
-        io.sockets.to("4").emit('userenter', { value:data.username,loginuser:loginuser4});
+        io.sockets.to("4").emit('userenter', { value:data.username,loginuser:loginuser4,gamecheck:gamecheck});
 
     
     });
 
- 
  socket.on('enter', function() {//メッセージイベントを送るイベント
  	
     io.sockets.emit('enter',{value:name});    
@@ -275,6 +274,7 @@ if((postcount*postcount)==votecount){//投稿してきたユーザーの数と�
  	 var resulttable="<tr><td>"+postusernamearray[i]+"</td><td>"+userpost[postusernamearray[i]]+"</td><td>"+CalPoint[postusernamearray[i]]+"</td>"
  	        console.log("resultテーブルです"+resulttable+"結果は？");
  	  		io.sockets.to(currentroomnum).emit('showresult',{result:resulttable,roomunum:mark.roomnum});//結果を表示するメソッド
+ 	  		gamecheck=0;//初期化しておく
  	  	}
 }
  	  
@@ -287,6 +287,7 @@ socket.on('initialize', function(data) {//初期化処理
      votecount=0;
      postusernamearray=new Array(1);
      userpost=new Array(79);//ユーザーの投稿を格納する用
+      gamecheck="1";//ゲーム中
      io.sockets.to(data.roomnum).emit('clientinitialize');//クライアント側の初期化処理
      
  });

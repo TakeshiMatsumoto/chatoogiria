@@ -17,7 +17,7 @@ loginuser=new Array(1)//ログイン中のユーザーを格納する
 socket.on('userenter',function(data){//入室した事を知らせる&現在ログイン中のユーザーの表示
 
 gamecheck=data.gamecheck;
-alert(gamecheck);
+
 if(ingame!=1){
 whetheringame();
 }
@@ -92,7 +92,6 @@ socket.emit('userenter4',{roomnum:"4",username:username,});
 });
 
 function whetheringame(){//入室した時にゲーム中だったらボタンを使えなくする
-alert(gamecheck);
 
 if(gamecheck=="1")
 {
