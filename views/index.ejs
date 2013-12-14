@@ -97,7 +97,7 @@ function whetheringame(){//入室した時にゲーム中だったらボタン�
 
 if(gamecheck=="1")
 {
-alert("bbb");
+
 $('#start').attr('disabled', true);
  $("#odai").text("只今ゲーム中です。しばらくお待ち下さい。（チャットはできます）"); 
 
@@ -409,9 +409,6 @@ socket.emit('userdelete',{roomnum:roomnumber,value:data.value})
 
   <div class="box" id="chatcss">
     <h2>チャットコーナー</h2></br>
-      <h3><div id="odai"></div></h3>
-  <h4 id="confirm"></h4>
-  <h2 id="timer"></h2></br>
 <div id="boxline"><ul id="chatbox"></ul></div>
   <input type="text" id="message" class="textform" value=""></br>
   <input type="button" value="発言" onclick="SendMsg()">
@@ -420,8 +417,8 @@ socket.emit('userdelete',{roomnum:roomnumber,value:data.value})
 
   <div class="box">
   <h2>大喜利コーナー</h2>
-  <h1><div id="odai"></div></h>
-  <h2 id="confirm"></h2>
+   <h3><div id="odai"></div></h3>
+  <h4 id="confirm"></h4>
   <h2 id="timer"></h2></br>
   <h2>回答フォーム<h2>
   <input type="text" id="answer" class="textform" value="">  <input id="answerbutton" type="button" value="お題に答える" onclick="answer()"><br>
