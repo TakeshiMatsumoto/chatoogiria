@@ -5,12 +5,13 @@ var express = require('express')//エクスプレスをインポート
   , path = require('path');
 var app = express();//アプリケーションオブジェクト
 
+
 app.configure(function(){//アプリケー主恩の編集
   app.set('port', process.env.PORT || 8080);//ポートを設定
   app.set('views', __dirname + '/views');
   app.use(express.static(__dirname + '/static'));
   app.set('view engine', 'ejs');
-    app.use(express.favicon());
+  app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
@@ -19,6 +20,8 @@ app.configure(function(){//アプリケー主恩の編集
   app.use(express.session());
    app.use(app.router);
 });
+
+
 
 app.configure('development', function(){
   app.use(express.errorHandler());
