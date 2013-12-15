@@ -53,3 +53,11 @@ body{
 width: 300px;
 
 }
+
+
+.list{
+	margin-left:0px;
+list-style-type: none;
+	
+	
+}

@@ -112,7 +112,7 @@ socket.on('clientmessage', function(msg) {//メッセージを受け取った時
 
   if(licount<40){
   $(function(){
-  var receivemsg="<li>"+msg.username+":"+msg.value+"</li>";
+  var receivemsg="<li class='list'>"+msg.username+":"+msg.value+"</li>";
   $("#chatbox").append(receivemsg); 
   
   });
@@ -120,7 +120,7 @@ socket.on('clientmessage', function(msg) {//メッセージを受け取った時
   else{
     $(function(){
   $("#chatbox li:first-child").remove();
-    var receivemsg="<li>"+msg.username+":"+msg.value+"</li>";
+    var receivemsg="<li class='list'>"+msg.username+":"+msg.value+"</li>";
   $("#chatbox").append(receivemsg); 
       });
   
