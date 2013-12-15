@@ -200,7 +200,7 @@ var pointcheck=$("#"+otherusername[i]+"check"+j+":checked").val();//ポイント
 
 if(pointcheck!=undefined)
 {
-alert(pointcheck);
+
 userpoints[otherusername[i]]=pointcheck;
 
 }
@@ -236,8 +236,8 @@ $("#table").empty();//結果表示を空にする
 $("#table").append($('<table class="table table-striped table-bordered" id="result"><thead><th width="120">名前</th><th width="150">ネタ</th><th width="60">点数</th><tbody id="tbody"></tbody></thead></table>'));
 otherusername = new Array(username);
 postusernamearray=new Array(1);
-timerseconds=20;
-votetimerseconds=10;
+timerseconds=120;
+votetimerseconds=100;
 userpoints=new Array(100);
 
 });
