@@ -358,7 +358,7 @@ socket.on('initialize', function(data) {//初期化処理
   　　io.sockets.to(allroomClients1[socket]).emit('userlogout',{value:allClients[socket],});//ログアウトした事を知らせるメソッドを起動。
   
     if( memberNumber[allroomClients1[socket]]==0)//もし最後にログインしているユーザーがログアウトしたら、配列を空にする
-    {
+    {　　　gamecheck=0;//ゲーム中ではなくする
     	if(allroomClients1[socket]==1){
     		
     		loginuser1.length=0;
