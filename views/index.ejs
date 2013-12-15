@@ -8,6 +8,7 @@
 <script type="text/javascript">
 var socket = io.connect('http://rocky-lowlands-2030.herokuapp.com/');
 
+
 otherusername=new Array(30);
 var ingame=0//ゲーム中かどうか判断するフラグ
 var gamecheck=0;
@@ -232,7 +233,7 @@ function DisConnect() {
 socket.on('clientinitialize',function(){
 ingame=1;
 $("#table").empty();//結果表示を空にする
-$("#table").append($('<table class="table table-striped table-bordered" id="result"><thead><th width="150">名前</th><th width="150">ネタ</th><th width="150">点数</th><tbody id="tbody"></tbody></thead></table>'));
+$("#table").append($('<table class="table table-striped table-bordered" id="result"><thead><th width="120">名前</th><th width="150">ネタ</th><th width="60">点数</th><tbody id="tbody"></tbody></thead></table>'));
 otherusername = new Array(username);
 postusernamearray=new Array(1);
 timerseconds=20;

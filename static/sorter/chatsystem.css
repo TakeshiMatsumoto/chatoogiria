@@ -5,6 +5,8 @@ body{
  margin-bottom: 50px;           /* ←追加 */
 }
 
+
+
 .box {
 	float: left;
 }
@@ -14,29 +16,32 @@ body{
 	color: red;
 }
 
+
+
 #title {
 	font-size: 200%;
 
 }
 
 #chatcss{
-		margin-right: 40px; 
-		margin-left: -25px; 
+		margin-right: 60px; 
+		margin-left: 0px; 
 		
 		
 
 }
 
 #currentloginuser{
-	border:solid; 
+		background-color: #F6F6F6;
 	
 }
 
 #boxline{
 	height:250;
 	width:420px;
-	border:solid; 
+	background-color: #F6F6F6;
 	overflow: scroll;
+
 	
 }
 
