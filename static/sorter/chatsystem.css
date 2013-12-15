@@ -14,10 +14,6 @@ body{
 	color: red;
 }
 
-#start {
-	margin-bottom: 30px;
-}
-
 #title {
 	font-size: 200%;
 
@@ -44,13 +40,11 @@ body{
 	
 }
 
+#start {
+	margin-bottom: 30px;
+}
+
 .textform {
 width: 300px;
 
-}
-
-#odai{
-	
-	font-size: 200%;
-	
 }
