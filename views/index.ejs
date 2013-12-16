@@ -8,6 +8,7 @@
 <script type="text/javascript">
 var socket = io.connect('http://rocky-lowlands-2030.herokuapp.com/');
 
+
 otherusername=new Array(30);
 var ingame=0//ゲーム中かどうか判断するフラグ
 var gamecheck=0;
@@ -135,7 +136,7 @@ socket.on('clientmessage', function(msg) {//メッセージを受け取った時
 socket.on('clientvotetime',function(){
 if( ingame==1){
 $(function(){
-$("#odai").text("投票タイムです！");
+$("#inform").text("投票タイムです！");
 });
 }
 });
@@ -199,7 +200,7 @@ var pointcheck=$("#"+otherusername[i]+"check"+j+":checked").val();//ポイント
 
 if(pointcheck!=undefined)
 {
-
+alert(pointcheck);
 userpoints[otherusername[i]]=pointcheck;
 
 }
@@ -424,10 +425,15 @@ socket.emit('userdelete',{roomnum:roomnumber,value:data.value})
   <body>
 
       <div id="title"> 大喜利チャットシステム </div> <h4>部屋番号:<%=roomnumber %></h4></br>
+<div id="caution">
+<h4>1 ゲーム中のログアウトはご遠慮下さい。ゲームの進行ができなくなります。</h4></br>
+<h4>2　ゲーム中にログアウトしてバグってしまったら一度全員ブラウザバックをして、ログインし直して下さい</h4></br>
+<h4>3　他不具合は全てブラウザバックで入り直すことで解決します。</h4></br>
+</div>
 <div id="currentloginuser"><h4>今ログイン中のユーザー</h4>
 <h4><ul id="loginuser"><ul></h4></div>
 <div id="enter"></div>
-  
+。
 
   <div class="box" id="chatcss">
     <h4>チャットコーナー</h4></br>
@@ -441,8 +447,6 @@ socket.emit('userdelete',{roomnum:roomnumber,value:data.value})
    </div>
     </div>
     </div>
-  </div>
-
   </div>
 
 <div class="container">
