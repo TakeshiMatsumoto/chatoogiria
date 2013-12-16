@@ -8,7 +8,6 @@
 <script type="text/javascript">
 var socket = io.connect('http://rocky-lowlands-2030.herokuapp.com/');
 
-
 otherusername=new Array(30);
 var ingame=0//ゲーム中かどうか判断するフラグ
 var gamecheck=0;
@@ -215,10 +214,33 @@ userpoints[otherusername[i]]=pointcheck;
 
 // メッセージを送る。送信ぼたんが押されたら
 function SendMsg() {
+
+
   var msg = document.getElementById("message").value;//フォームからデータを取って来てる
+
+  $(function(){
+  
+  $("#message").val("");
+  
+  });
+
   // メッセージを発射する。発射されたメッセージはサーパーにいき、サーバーのメッセージイベントが起動され、全員の元へ行く。
   socket.emit('message', { value: msg,roomnum:roomnumber,username:username,}); //メッセージメソッドでメッセージを送信。valueにはmsgが格納
 }
+
+$(function(){
+
+$("#message").keydown(function(e){//チャットのテキストエリアでエンターキーが押されたら
+
+ if(e.keyCode==13)
+ {
+  SendMsg();
+ }
+
+});
+
+ });
+
 
 // 切断する
 function DisConnect() {
@@ -237,7 +259,7 @@ $("#table").append($('<table class="table table-striped table-bordered" id="resu
 otherusername = new Array(username);
 postusernamearray=new Array(1);
 timerseconds=120;
-votetimerseconds=100;
+votetimerseconds=(loginuser.length*12);
 userpoints=new Array(100);
 
 });
