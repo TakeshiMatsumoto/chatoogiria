@@ -6,6 +6,7 @@
 <link href="/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <script src="./sorter/jquery.tablesorter.min.js"></script>
 <script type="text/javascript">
+<meta name="ROBOTS" content="NOINDEX" />
 var socket = io.connect('http://rocky-lowlands-2030.herokuapp.com/');
 
 
@@ -136,7 +137,7 @@ socket.on('clientmessage', function(msg) {//メッセージを受け取った時
 socket.on('clientvotetime',function(){
 if( ingame==1){
 $(function(){
-$("#inform").text("投票タイムです！(同期ズレで結果が出るのが遅れる事があります）");
+$("#inform").text("投票タイムです(同期ズレで結果が遅れる事があります）");
 });
 }
 });
