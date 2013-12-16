@@ -5,7 +5,11 @@ body{
  margin-bottom: 50px;           /* ←追加 */
 }
 
+#caution {
 
+	color: red;
+			background-color: #111111;
+}
 
 .box {
 	float: left;
@@ -53,7 +57,6 @@ body{
 width: 300px;
 
 }
-
 
 .list{
 	margin-left:0px;
