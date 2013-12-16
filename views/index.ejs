@@ -136,7 +136,7 @@ socket.on('clientmessage', function(msg) {//メッセージを受け取った時
 socket.on('clientvotetime',function(){
 if( ingame==1){
 $(function(){
-$("#inform").text("投票タイムです！");
+$("#inform").text("投票タイムです！(同期ズレで結果が出るのが遅れる事があります）");
 });
 }
 });
