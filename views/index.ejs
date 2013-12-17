@@ -416,6 +416,19 @@ for(var i=1; i<loginuser.length;i++){
 socket.emit('userdelete',{roomnum:roomnumber,value:data.value})
 });
 
+window.document.onkeydown = function() {
+    if (event.keyCode == 8) {
+      alert("BackSpace キーが押されました");
+      event.keyCode = null; // キー押下を無効に
+    }
+    if (event.keyCode == 116) {
+      alert("F5 キーが押されました");
+      event.keyCode = null;
+      return false;
+    }
+  }
+
+
 </script>
 
 <!DOCTYPE html>
